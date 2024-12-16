@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
+@import url('https://rsms.me/inter/inter.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Inter var', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-200 text-sm;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary-dark shadow-sm hover:shadow-glass-hover;
+  }
+
+  .btn-outline {
+    @apply border border-gray-200 hover:border-gray-300 bg-white hover:bg-gray-50;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 outline-none;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-glass hover:shadow-glass-hover transition-all duration-200;
+  }
+}
+
+.glass-effect {
+  @apply bg-white/80 backdrop-blur-lg;
+}
+
+/* QR Code Patterns */
+.qr-pattern-dots .qr-cell {
+  border-radius: 50%;
+}
+
+.qr-pattern-rounded .qr-cell {
+  border-radius: 4px;
+}
+
+/* QR Code Styles */
+.qr-style-border {
+  padding: 16px;
+  border: 2px solid currentColor;
+  border-radius: 12px;
+}
+
+.qr-style-shadow {
+  padding: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.qr-style-dashed {
+  padding: 16px;
+  border: 2px dashed currentColor;
+  border-radius: 12px;
+}
