@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const props = defineProps<{
+defineProps<{
     isOpen: boolean
 }>()
 
@@ -9,8 +9,6 @@ const emit = defineEmits<{
     (e: 'close'): void
 }>()
 
-const amount = ref('5')
-const customAmount = ref(false)
 const selectedMethod = ref('')
 
 const paymentMethods = [
@@ -31,8 +29,6 @@ const paymentDetails = {
         link: `https://paypal.me/djordje.krstic97`
     }
 }
-
-const predefinedAmounts = ['5', '10', '25', '50']
 
 const copyToClipboard = async (text: string) => {
     try {
@@ -56,28 +52,6 @@ const copyToClipboard = async (text: string) => {
                     <h3 class="text-2xl font-bold font-display mb-2">Support QRtist</h3>
                     <p class="text-gray-600">Your support helps us keep QRtist free and accessible for everyone</p>
                 </div>
-
-                <!-- Износи -->
-                <!-- <div class="space-y-6 mb-8">
-                    <div class="grid grid-cols-4 gap-4">
-                        <button v-for="value in predefinedAmounts" :key="value"
-                            @click="amount = value; customAmount = false" :class="[
-                                'py-3 px-4 rounded-xl border text-lg font-medium transition-all duration-200',
-                                amount === value && !customAmount
-                                    ? 'border-primary bg-primary/5 text-primary'
-                                    : 'border-gray-200 hover:border-gray-300'
-                            ]">
-                            ${{ value }}
-                        </button>
-                    </div>
-
-                    <div class="relative">
-                        <input type="number" v-model="amount" @focus="customAmount = true"
-                            class="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200 outline-none text-lg"
-                            placeholder="Custom amount" min="1" step="1" />
-                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></span>
-                    </div>
-                </div> -->
 
                 <!-- Методе плаћања -->
                 <div class="space-y-4 mb-8">
