@@ -2,6 +2,8 @@
 import Header from './components/Header.vue'
 import QRGenerator from './components/QRGenerator.vue'
 import Logo from './components/common/Logo.vue'
+import DonateModal from './components/common/DonateModal.vue'
+import { ref } from 'vue'
 
 const features = [
   {
@@ -46,6 +48,8 @@ const useCases = [
     examples: ['Tickets', 'Schedule Updates', 'Live Polling']
   }
 ]
+
+const isDonateModalOpen = ref(false)
 </script>
 
 <template>
@@ -204,7 +208,7 @@ const useCases = [
             <span class="text-primary">everyone</span>
           </h2>
           <p class="text-gray-600">
-            Our core features are completely free. Support us through donations or unlock additional features with a
+            Our core features are completely free. Support me through donations or unlock additional features with a
             premium account.
           </p>
         </div>
@@ -242,39 +246,44 @@ const useCases = [
           <!-- Donation/Premium -->
           <div
             class="p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-white border border-gray-100 hover:border-gray-200 transition-all duration-200">
-            <h3 class="text-2xl font-bold mb-2">Support Us</h3>
+            <h3 class="text-2xl font-bold mb-2">Support Me</h3>
             <p class="text-gray-600 mb-6">Help us keep the service free for everyone</p>
-            <div class="text-3xl font-bold mb-6">
+
+            <div class="text-3xl font-bold mb-8">
               <span class="text-primary">♥️</span>
               <span class="text-gray-400 text-base">Pay what you want</span>
             </div>
-            <ul class="space-y-4 mb-8">
-              <li class="flex items-start">
-                <span class="text-primary mr-2">✨</span>
-                <span>Remove "Created with QRtist" watermark</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-primary mr-2">✨</span>
-                <span>Priority support</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-primary mr-2">✨</span>
-                <span>Advanced analytics</span>
-              </li>
-              <li class="flex items-start">
-                <span class="text-primary mr-2">✨</span>
-                <span>Early access to new features</span>
-              </li>
-            </ul>
-            <button class="btn btn-outline w-full hover:bg-primary hover:text-white hover:border-primary">
-              Support the Project
-            </button>
+
+            <!-- Нови садржај -->
+            <div class="space-y-6">
+              <div class="flex items-start gap-4 p-4 bg-blue-50/50 rounded-xl">
+                <span class="text-2xl">🚀</span>
+                <div>
+                  <h4 class="font-medium mb-1">Future Development</h4>
+                  <p class="text-sm text-gray-600">Your support helps us develop new features and keep improving QRtist
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 bg-green-50/50 rounded-xl">
+                <span class="text-2xl">🌍</span>
+                <div>
+                  <h4 class="font-medium mb-1">Open Source</h4>
+                  <p class="text-sm text-gray-600">I believe in making technology accessible to everyone</p>
+                </div>
+              </div>
+
+              <button class="btn btn-outline w-full hover:bg-primary hover:text-white hover:border-primary"
+                @click="isDonateModalOpen = true">
+                Support the Project
+              </button>
+            </div>
           </div>
         </div>
 
         <div class="text-center mt-12 text-gray-600">
           <p class="max-w-2xl mx-auto">
-            We believe in making QR code technology accessible to everyone. Your donations help us maintain and improve
+            I believe in making QR code technology accessible to everyone. Your donations help us maintain and improve
             the platform while keeping it free for those who need it.
           </p>
         </div>
@@ -349,6 +358,9 @@ const useCases = [
       </div>
     </div>
   </footer>
+
+  <!-- Додајте модал на крај template секције: -->
+  <DonateModal :is-open="isDonateModalOpen" @close="isDonateModalOpen = false" />
 </template>
 
 <style scoped>
