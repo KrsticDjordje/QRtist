@@ -3,20 +3,21 @@ import type { QRCodeConfig } from '@/types/qr'
 
 export const generateQRCode = async (config: QRCodeConfig): Promise<string> => {
   try {
-    const opts = {
+    const opts: QRCode.QRCodeToDataURLOptions = {
       color: {
         dark: config.color,
         light: config.backgroundColor
       },
-      width: config.width || 400,
       margin: 1,
-      errorCorrectionLevel: 'H'
+      errorCorrectionLevel: 'H' as const,
+      width: 400 // фиксна ширина
     }
 
     const qrDataUrl = await QRCode.toDataURL(config.url, opts)
 
     if (config.logo) {
-      return await addLogoToQR(qrDataUrl, config.logo, config.logoSize || 60)
+      const qrWithLogo = await addLogoToQR(qrDataUrl, config.logo, config.logoSize || 60)
+      return qrWithLogo
     }
 
     return qrDataUrl

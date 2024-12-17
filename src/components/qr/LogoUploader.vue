@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const props = defineProps<{
+defineProps<{
   modelValue?: string
 }>()
 
@@ -36,35 +36,18 @@ const removeLogo = () => {
       <h3 class="text-lg font-semibold font-display">Logo</h3>
       <p class="text-sm text-gray-500">Add a custom logo to your QR code</p>
     </div>
-    
+
     <div class="space-y-4">
-      <input
-        ref="fileInput"
-        type="file"
-        accept="image/*"
-        class="hidden"
-        @change="handleFileChange"
-      />
-      
+      <input ref="fileInput" type="file" accept="image/*" class="hidden" @change="handleFileChange" />
+
       <div v-if="modelValue" class="space-y-4">
-        <img
-          :src="modelValue"
-          alt="Logo preview"
-          class="w-20 h-20 object-contain mx-auto border rounded-lg p-2"
-        />
-        <button
-          class="btn btn-outline w-full text-red-500 hover:bg-red-50"
-          @click="removeLogo"
-        >
+        <img :src="modelValue" alt="Logo preview" class="w-20 h-20 object-contain mx-auto border rounded-lg p-2" />
+        <button class="btn btn-outline w-full text-red-500 hover:bg-red-50" @click="removeLogo">
           Remove Logo
         </button>
       </div>
-      
-      <button
-        v-else
-        class="btn btn-outline w-full"
-        @click="fileInput?.click()"
-      >
+
+      <button v-else class="btn btn-outline w-full" @click="fileInput?.click()">
         Upload Logo
       </button>
     </div>
