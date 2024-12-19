@@ -4,11 +4,9 @@ import Logo from './common/Logo.vue'
 import NavLink from './common/NavLink.vue'
 
 const navLinks = [
-  { href: '#', text: 'Product' },
-  { href: '#', text: 'Pricing' },
-  { href: '#', text: 'Enterprise' },
-  { href: '#', text: 'Solution' },
-  { href: '#', text: 'Help' }
+  { href: '#', text: 'Features' },
+  { href: '#', text: 'How it works' },
+  { href: '#', text: 'Donate' }
 ]
 
 const isMenuOpen = ref(false)
@@ -59,8 +57,7 @@ const toggleMenu = () => {
             </div>
 
             <div class="hidden lg:flex items-center gap-4">
-              <button class="btn btn-outline">Sign In</button>
-              <button class="btn btn-primary">Sign Up</button>
+              <button class="btn btn-primary">Get Started</button>
             </div>
           </div>
         </div>
